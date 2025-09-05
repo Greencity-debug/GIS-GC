@@ -5,13 +5,14 @@ import { EditControl } from 'react-leaflet-draw';
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
 import { createClient } from '@supabase/supabase-js';
+import { LatLngExpression } from 'leaflet';
 
 // Инициализируем Supabase-клиент прямо в этом файле
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-const center = [55.933333, 52.283333];
+const center: LatLngExpression = [55.933333, 52.283333];
 
 const savePolygonToSupabase = async (geojson: any) => {
   try {
