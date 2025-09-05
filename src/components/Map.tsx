@@ -7,7 +7,6 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
 import { createClient } from '@supabase/supabase-js';
 import { LatLngExpression } from 'leaflet';
-import L from 'leaflet';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
@@ -38,7 +37,7 @@ const savePolygonToSupabase = async (geojson: any) => {
 };
 
 const Map = () => {
-    const [polygons, setPolygons] = useState<any[]>([]);
+    const [polygons, setPolygons] = useState<any>();
     const [searchTerm, setSearchTerm] = useState('');
 
     const fetchPolygons = async (term = '') => {
@@ -61,7 +60,12 @@ const Map = () => {
         geometry: item.geometry
       }));
 
-      setPolygons(geojsonFeatures);
+      const featureCollection = {
+        type: 'FeatureCollection',
+        features: geojsonFeatures
+      };
+
+      setPolygons(featureCollection);
     };
 
     useEffect(() => {
@@ -109,7 +113,7 @@ const Map = () => {
                 />
               </LayersControl.BaseLayer>
             </LayersControl>
-            {polygons.length > 0 && <GeoJSON data={polygons} />}
+            {polygons && <GeoJSON data={polygons} />}
             <FeatureGroup>
                 <EditControl
                     position="topright"
