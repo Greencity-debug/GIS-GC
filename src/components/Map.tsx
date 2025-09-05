@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
 import { createClient } from '@supabase/supabase-js';
 import { LatLngExpression } from 'leaflet';
+import L from 'leaflet';
 
 // Инициализируем Supabase-клиент прямо в этом файле
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
