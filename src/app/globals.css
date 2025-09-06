@@ -80,7 +80,51 @@ a {
   display: none;
 }
 
-/* Применяем flexbox к основному контейнеру LayersControl */
-.custom-layers-control .leaflet-control-layers-base {
+/* Custom styles for LayerControl buttons */
+.leaflet-control-layers {
+  border-radius: 8px; /* Скругляет углы всего контрола */
+  overflow: hidden; /* Обрезает содержимое по скругленным углам */
+  border: 1px solid #ccc; /* Легкая граница */
   display: flex;
+  flex-direction: row;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+.leaflet-control-layers-list {
+  display: flex; /* Сделает кнопки в один ряд */
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.leaflet-control-layers-base label {
+  border: none;
+  padding: 8px 12px;
+  background-color: #fff; /* Белый фон для неактивных */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  flex-grow: 1; /* Распределяет пространство равномерно */
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333; /* Цвет текста для неактивных */
+  margin: 0; /* Убираем стандартные отступы */
+}
+
+/* Стили для активной кнопки */
+.leaflet-control-layers-base input[type="radio"]:checked + span {
+  background-color: #388e3c; /* Зеленый фон для активной кнопки */
+  color: #fff; /* Белый текст для активной кнопки */
+  border-radius: 0;
+  padding: 8px 12px;
+}
+
+/* Стили для наведения */
+.leaflet-control-layers-base label:hover {
+  background-color: #f0f0f0; /* Легкий фон при наведении */
+}
+
+/* Убираем маркер радио-кнопки */
+.leaflet-control-layers-base input[type="radio"] {
+  display: none;
 }
