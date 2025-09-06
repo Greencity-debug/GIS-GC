@@ -82,6 +82,8 @@ const Map = () => {
       setSearchTerm(e.target.value);
     };
 
+    const YANDEX_MAPS_API_KEY = "4580c9ee-36f1-470b-80f6-546705bc3d38"; 
+
     return (
       <>
         <div style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 1000 }}>
@@ -94,7 +96,12 @@ const Map = () => {
         </div>
         <MapContainer center={center} zoom={13} style={{ height: '100vh', width: '100%' }}>
             <LayersControl position="topright">
-              <LayersControl.BaseLayer checked name="Схема">
+              <LayersControl.BaseLayer checked name="Яндекс.Схема">
+                <TileLayer
+                    url={`https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU&v=23.03.17-0&key=${YANDEX_MAPS_API_KEY}`}
+                />
+              </LayersControl.BaseLayer>
+              <LayersControl.BaseLayer name="OpenStreetMap">
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -104,12 +111,6 @@ const Map = () => {
                 <TileLayer
                   attribution='Map data © <a href="https://www.bing.com/maps">Bing Maps</a>'
                   url="https://ecn.t0.tiles.virtualearth.net/tiles/a{q}.jpeg?g=587&mkt=en-US&shading=hill"
-                />
-              </LayersControl.BaseLayer>
-              <LayersControl.BaseLayer name="Гибрид">
-                <TileLayer
-                  attribution='Map data © <a href="https://www.bing.com/maps">Bing Maps</a>'
-                  url="https://ecn.t0.tiles.virtualearth.net/tiles/h{q}.jpeg?g=587&mkt=en-US&shading=hill"
                 />
               </LayersControl.BaseLayer>
             </LayersControl>
