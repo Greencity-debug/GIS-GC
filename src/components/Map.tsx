@@ -95,7 +95,7 @@ const Map = () => {
           />
         </div>
         <MapContainer center={center} zoom={13} style={{ height: '100vh', width: '100%' }}>
-            <LayersControl position="topright" className="custom-layers-control">
+            <LayersControl position="topright">
               <LayersControl.BaseLayer checked name="Яндекс.Схема">
                 <TileLayer
                     url={`https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU&v=23.03.17-0&key=${YANDEX_MAPS_API_KEY}`}
