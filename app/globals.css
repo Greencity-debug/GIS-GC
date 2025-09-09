@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Стили для Leaflet */
+@import 'leaflet/dist/leaflet.css';
+@import 'leaflet-draw/dist/leaflet.draw.css';
+
+/* Переопределение стилей Leaflet для нашего дизайна */
+.leaflet-container {
+  background: #f0f0f0;
+}
+
+.leaflet-control-container .leaflet-control-attribution {
+  display: none;
+}
